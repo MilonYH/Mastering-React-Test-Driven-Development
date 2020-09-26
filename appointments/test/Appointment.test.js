@@ -34,8 +34,14 @@ describe('Appointment', () => {
 describe('AppointmentsDayView', () => {
     const today = new Date();
     const appointments = [
-        {startsAt: today.setHours(12, 0)},
-        {startsAt: today.setHours(13, 0)}
+        {
+            startsAt: today.setHours(12, 0),
+            customer: {firstname: 'Ashley'}
+        },
+        {
+            startsAt: today.setHours(13, 0),
+            customer: {firstname: 'Jordan'}
+        }
     ];
 
     let container;
