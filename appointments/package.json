@@ -4,7 +4,9 @@
   "description": "Appointments system",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "watch": "jest --watchAll",
+    "coverage": "jest --coverage"
   },
   "repository": {
     "type": "git",
@@ -16,6 +18,7 @@
     "@babel/plugin-transform-runtime": "^7.11.5",
     "@babel/preset-env": "^7.11.5",
     "@babel/preset-react": "^7.10.4",
+    "@jest/globals": "^26.4.2",
     "jest": "^26.4.2"
   },
   "dependencies": {
