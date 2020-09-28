@@ -10,6 +10,6 @@ export const sampleAppointments = [
     {startsAt: at(13), customer:{firstname: 'Jordan'}},
     {startsAt: at(14), customer:{firstname: 'Jay'}},
     {startsAt: at(15), customer:{firstname: 'Alex'}},
-    {startsAt: at(15), customer:{firstname: 'Jules'}},
-    {startsAt: at(15), customer:{firstname: 'Stevie'}}
+    {startsAt: at(16), customer:{firstname: 'Jules'}},
+    {startsAt: at(17), customer:{firstname: 'Stevie'}}
 ];
