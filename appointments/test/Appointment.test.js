@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {Appointment, AppointmentsDayView} from "../src/components/appointment";
 import {beforeEach, describe, it} from "@jest/globals";
+import ReactTestUtils from 'react-dom/test-utils';
 
 
 describe('Appointment', () => {
@@ -52,7 +53,7 @@ describe('AppointmentsDayView', () => {
     const render = component => ReactDOM.render(component, container);
 
     it('renders a div with the right id', () => {
-        render(<AppointmentsDayView appointments={[]}/>);
+        render(<AppointmentsDayView appointments={appointments}/>);
         expect(container.querySelector('#appointmentsDayView')).not.toBeNull();
     });
 
@@ -90,4 +91,12 @@ describe('AppointmentsDayView', () => {
         expect(container.querySelectorAll('li > button')).toHaveLength(appointments.length);
         expect(container.querySelectorAll('li > button')[0].type).toEqual('button');
     });
+
+    it.skip('renders another appointment when selected', () => {
+        render(<AppointmentsDayView appointments={appointments}/>);
+        const button = container.querySelectorAll('button')[1];
+        ReactTestUtils.Simulate.click(button);
+        expect(container.textContent).toMatch('Jordan');
+    });
 });
+
