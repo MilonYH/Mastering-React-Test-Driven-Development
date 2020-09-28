@@ -6,7 +6,8 @@
   "scripts": {
     "test": "jest",
     "watch": "jest --watchAll",
-    "coverage": "jest --coverage"
+    "coverage": "jest --coverage",
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
@@ -19,7 +20,10 @@
     "@babel/preset-env": "^7.11.5",
     "@babel/preset-react": "^7.10.4",
     "@jest/globals": "^26.4.2",
-    "jest": "^26.4.2"
+    "babel-loader": "^8.1.0",
+    "jest": "^26.4.2",
+    "webpack": "^4.44.2",
+    "webpack-cli": "^3.3.12"
   },
   "dependencies": {
     "@babel/runtime": "^7.11.2",
