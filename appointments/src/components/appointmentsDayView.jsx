@@ -9,7 +9,13 @@ const appointmentTimeOfDay = startsAt => {
 export const Appointment = ({customer}) => {
     return (
         <div>
-            {customer.firstname}
+            <h2>{customer.startsAt}</h2>
+            <p>{customer.firstname}</p>
+            <p>{customer.lastname}</p>
+            <p>{customer.phoneNumber}</p>
+            <p>{customer.stylist}</p>
+            <p>{customer.service}</p>
+            <p>{customer.notes}</p>
         </div>
     );
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Appointment, AppointmentsDayView} from "../src/components/appointment";
+import {Appointment, AppointmentsDayView} from "../src/components/appointmentsDayView";
 import {beforeEach, describe, it} from "@jest/globals";
 import ReactTestUtils from 'react-dom/test-utils';
 
@@ -30,6 +30,50 @@ describe('Appointment', () => {
 
         expect(container.textContent).toMatch('Max');
     });
+    it('renders the passed last name', () => {
+        customer = {
+            lastname: 'Heim'
+        };
+        render(<Appointment customer={customer}/>);
+        expect(container.textContent).toMatch('Heim');
+    });
+    it('renders the passed phone number', () => {
+        customer = {
+            phoneNumber: '07223-22718'
+        };
+        render(<Appointment customer={customer}/>);
+        expect(container.textContent).toMatch('07223-22718');
+    });
+    it('renders the stylist assigned to customer', () => {
+        customer = {
+            stylist: 'Sarah'
+        };
+        render(<Appointment customer={customer}/>);
+        expect(container.textContent).toMatch('Sarah');
+    });
+    it('renders the service the customer wants', () => {
+        customer = {
+            service: "Cutting hair and styling"
+        };
+        render(<Appointment customer={customer}/>);
+        expect(container.textContent).toMatch("Cutting hair and styling");
+    });
+    it('renders the added notes', () => {
+        customer = {
+            notes: "She has very curly hair, so be careful with the moisture."
+        };
+        render(<Appointment customer={customer}/>);
+        expect(container.textContent).toMatch("She has very curly hair, so be careful with the moisture.");
+    });
+    it('renders the appointment time as a h2 heading', ()=>{
+        customer = {
+            startsAt: "13:00",
+        }
+        render(<Appointment customer={customer}/>);
+        expect(container.querySelectorAll('h2').length).toBe(1);
+        expect(container.querySelector('h2').textContent).toEqual("13:00");
+    });
+
 });
 
 describe('AppointmentsDayView', () => {
@@ -71,7 +115,6 @@ describe('AppointmentsDayView', () => {
         expect(container.querySelectorAll('li')).toHaveLength(2);
         expect(container.querySelectorAll('li')[0].textContent).toEqual('12:00');
         expect(container.querySelectorAll('li')[1].textContent).toEqual('13:00');
-
     });
 
     it('initially shows a message saying there are no appointments today', () => {
