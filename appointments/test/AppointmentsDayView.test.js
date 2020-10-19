@@ -66,12 +66,17 @@ describe('Appointment', () => {
         expect(container.textContent).toMatch("She has very curly hair, so be careful with the moisture.");
     });
     it('renders the appointment time as a h2 heading', ()=>{
+        const today = new Date();
+        const timestamp = today.setHours(9,0,0);
         customer = {
-            startsAt: "13:00",
+            firstName: 'Ashley'
         }
-        render(<Appointment customer={customer}/>);
-        expect(container.querySelectorAll('h2').length).toBe(1);
-        expect(container.querySelector('h2').textContent).toEqual("13:00");
+        render(
+            <Appointment customer={customer} startsAt={timestamp}/>)
+
+        expect(container.querySelectorAll('h2').length).not.toBe(0);
+        expect(container.querySelector('h2').textContent)
+            .toMatch("Today's appointment at 09:00");
     });
 
 });
