@@ -20,9 +20,9 @@ describe('CustomerForm', () => {
         expect(formElement.type).toEqual('text');
     }
 
-    const firstNameField = () => form('customer').elements.firstName;
-
     const labelFor = formElement => container.querySelector(`label[for=${formElement}]`);
+
+    const field = name => form('customer').elements[name];
 
     describe('first name field', () => {
 
@@ -33,12 +33,12 @@ describe('CustomerForm', () => {
 
         it('renders a text box', () => {
             render(<CustomerForm/>);
-            expectToBeInputFieldOfTypeText(firstNameField());
+            expectToBeInputFieldOfTypeText(field('firstName'));
         });
 
         it('includes the existing value', () => {
             render(<CustomerForm firstName="Ashley"/>);
-            expect(firstNameField().value).toEqual('Ashley');
+            expect(field('firstName').value).toEqual('Ashley');
         });
 
         it('renders a label', () => {
@@ -48,7 +48,7 @@ describe('CustomerForm', () => {
 
         it('assigns an id that matches the label id', () => {
             render(<CustomerForm/>);
-            expect(firstNameField().id).toEqual('firstName');
+            expect(field('firstName').id).toEqual('firstName');
         });
 
         it('saves existing value when submitted', async() => {
@@ -74,7 +74,7 @@ describe('CustomerForm', () => {
                 />
             );
 
-            await ReactTestUtils.Simulate.change(firstNameField(), { target: {value: 'Jamie'}});
+            await ReactTestUtils.Simulate.change(field('firstName'), { target: {value: 'Jamie'}});
             await ReactTestUtils.Simulate.submit(form('customer'));
         });
     });
