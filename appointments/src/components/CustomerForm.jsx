@@ -5,9 +5,9 @@ export const CustomerForm = ({firstName, lastName, phoneNumber, onSubmit}) => {
     const [customer, setCustomer] = useState({firstName, lastName, phoneNumber});
 
     const handleChange = ({target}) => {
-        setCustomer( customer => ({
+        setCustomer(customer => ({
             ...customer,
-                [target.name]:target.value
+            [target.name]: target.value
         }));
     }
 
